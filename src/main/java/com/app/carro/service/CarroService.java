@@ -13,6 +13,14 @@ public interface CarroService {
 	
 	public Carro findById(Long id);
 	
+	/////////////////////////
+	public void deleteById(Long id);
+
+	public Carro save(Carro carro);
+	
+	
+	
+	
 	//@DeleteMapping
 		//@PostMapping
 		//@Put

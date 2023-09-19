@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,16 @@ public class CarroServiceImpl implements CarroService {
 	public Carro findById(Long id) {
 
 		return carroDao.findById(id).orElse(null);
+	}
+	
+	@Override
+	public void deleteById(Long id) {
+		carroDao.deleteById(id);
+	}
+	
+	@Override
+	public Carro save(Carro carro) {
+		return carroDao.save(carro);
 	}
 	
 	//@DeleteMapping
