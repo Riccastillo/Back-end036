@@ -4,6 +4,8 @@ package com.app.carro.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,25 +35,27 @@ public class CarroController {
 	
 	////////////////////
 	@DeleteMapping("/carro/delete/{id}")
-	public String delete(@PathVariable Long id) {
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.deleteById(id);
-		return "Se ha borrado el registro del carro seleccionado";
+		return ResponseEntity.noContent().build();
 	}
 	
 	@PostMapping("/carro/create/")
-	public Carro create(@RequestBody Carro carro) {
-		return service.save(carro);
+	public ResponseEntity<Carro> create(@RequestBody Carro instance) {
+		Carro saveCar = service.save(instance);
+		return new ResponseEntity<>(saveCar, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/carro/update/{id}")
-	public Carro update(@RequestBody Carro carro, @PathVariable Long id) {
-		Carro nuevoCarro = service.findById(id);
-				
-		nuevoCarro.setName(carro.getName());
-		nuevoCarro.setMarca(carro.getMarca());
-		nuevoCarro.setColor(carro.getColor());
+	public ResponseEntity<Carro> update(@RequestBody Carro instance, @PathVariable Long id) {
+		if(service.existsById(id)) {
+			instance.setId(id);
+			Carro updateCarro = service.save(instance);
+			return new ResponseEntity<>(updateCarro, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 		
-		return service.save(nuevoCarro);
 	}
 	
 	//@PostMapping

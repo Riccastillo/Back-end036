@@ -16,7 +16,9 @@ public interface CarroService {
 	/////////////////////////
 	public void deleteById(Long id);
 
-	public Carro save(Carro carro);
+	public Carro save(Carro instance);
+	
+	public boolean existsById(Long id);
 	
 	
 	

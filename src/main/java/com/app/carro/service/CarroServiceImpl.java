@@ -32,13 +32,21 @@ public class CarroServiceImpl implements CarroService {
 	}
 	
 	@Override
+	@Transactional(readOnly=true)
 	public void deleteById(Long id) {
 		carroDao.deleteById(id);
 	}
 	
 	@Override
-	public Carro save(Carro carro) {
-		return carroDao.save(carro);
+	@Transactional(readOnly=true)
+	public Carro save(Carro instance) {
+		return carroDao.save(instance);
+	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public boolean existsById(Long id) {
+		return carroDao.existsById(id);
 	}
 	
 	//@DeleteMapping
