@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.app.carro.entity.Carro;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class SpringbootServiceCarroApplication {
 
 	public static void main(String[] args) {
