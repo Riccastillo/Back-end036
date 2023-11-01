@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableFeignClients
-//@EnableEurekaClient
+@EnableEurekaClient
 @SpringBootApplication
 public class SpringbootServiceStoreApplication {
 
