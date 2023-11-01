@@ -2,8 +2,10 @@ package com.app.carro.controllers;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,9 +25,15 @@ public class CarroController {
 	@Autowired
 	private CarroService service;
 	
+	@Value("${server.port}")
+	private Integer port;
+	
 	@GetMapping("/list")
 	public List<Carro> list(){
-		return service.findAll();
+		return service.findAll().stream().map(car -> {
+			car.setPort(port);
+			return car;
+		}).collect(Collectors.toList());
 	}
 	
 	@GetMapping("/carro/{id}")

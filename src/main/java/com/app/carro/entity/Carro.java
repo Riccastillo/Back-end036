@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="carro")
@@ -27,6 +28,8 @@ public class Carro implements Serializable{
 	
 	private String color;
 	
+	@Transient
+	private Integer port;
 	
 	
 	public Long getId() {
@@ -55,6 +58,13 @@ public class Carro implements Serializable{
 	}
 	public void setColor(String color) {
 		this.color = color;
+	}
+	
+	public Integer getPort() {
+		return port;
+	}
+	public void setPort(Integer port) {
+		this.port = port;
 	}
 	
 }
