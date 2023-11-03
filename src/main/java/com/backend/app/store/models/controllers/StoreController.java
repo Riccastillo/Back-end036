@@ -40,7 +40,7 @@ public class StoreController {
 		store.setCantidad(cantidad);
 		store.setCar(car);
 		
-		return store;)
+		return store;
 	}
 	
 }
