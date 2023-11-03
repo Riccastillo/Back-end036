@@ -42,5 +42,11 @@ public class Carro {
 	
 	private String color;
 	
+	public Carro(Long id, String name, String marca) {
+		this.id=id;
+		this.name=name;
+		this.marca=marca;
+	}
+	
 
 }
