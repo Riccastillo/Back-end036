@@ -38,6 +38,15 @@ public class CarroController {
 	
 	@GetMapping("/carro/{id}")
 	public Carro detail(@PathVariable Long id) {
+		
+		//boolean bl = false;
+		//if(!bl)
+			//throw new RuntimeException("No se pudo obtener el detalle del carro seleccionado");
+		try {
+			Thread.sleep(2000L);
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
 		return service.findById(id);
 	}
 	
