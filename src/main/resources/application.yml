@@ -15,14 +15,21 @@ zuul:
     carro:
       service-id: service-carro
       path: /api/cars/**
+    users:
+      service-id: servicio-usuarios
+      path: /api/us/**  
+    oauth:
+      service-id: servicio-oauth
+      path: /api/security/**
+      sensitive-headers: Cookie,Set-Cookie
 ribbon:
-  ConnectTimeout: 150000
-  ReadTimeout: 150000
+  ConnectTimeout: 250000
+  ReadTimeout: 250000
 hystrix:
   command:
     default:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 100000
+            timeoutInMilliseconds: 200000
     
